@@ -1,0 +1,12 @@
+; Avery's forcefield for alginate (7/14/2020)
+
+#define _FF_GROMOS96
+#define _FF_GROMOS53A6
+
+[ defaults ]
+; nbfunc	comb-rule	gen-pairs	fudgeLJ	fudgeQQ
+  1		1		yes		1.0	1.0
+
+#include "ffnonbonded.itp"
+#include "ffbonded.itp"
+

@@ -1,0 +1,50 @@
+CONTENTS:
+=========
+
+Files available:
+
+1. GROMACS .rtp entries; separate files for alpha- (RTP_alpha) and beta- (RTP_beta) anomers. 
+   The entries allow to construct of arbitrary linear glucose chains (any linkage/anomery):
+
+   GNRD: guluronate non-reducing end (1-4 linkage) from alpha GLC0;
+   GMON: guluronate residue in chain (1-4 linkage) from alpha GLC;
+   GRED: guluronate reducing end (1-4 linkage) from alpha GLCN;
+
+   MNRD: mannuronate non-reducing end (1-4 linkage) from beta GLC0;
+   MMON: mannuronate residue in chain (1-4 linkage) from beta GLC;
+   MRED: mannuronate reducing end (1-4 linkage) from beta GLCN;
+
+
+
+
+   GLCA: beta-glucose monomer;
+   GLCB: beta-glucose monomer;
+   GLAM: beta-glucose monomer, methylated at O1;
+   GLBM: beta-glucose monomer, methylated at O1;
+   GLC0: non-reducing end (1-4 linkage);
+   GLC: residue in a chain (1-4 linkage);
+   GLCN: reducing end (1-4 linkage);
+
+
+2. Files with bonded (ffbonded.itp) and non-bonded (ffnonbonded.itp) interaction parameters.
+
+3. Python script CONVERT.py allowing to generate the proper topologies including 
+   the special 1-4 and 1-5 LJ exceptions (authored by M. Drach, drach@vega.umcs.lublin.pl).
+
+Usage:
+
+1. Generation of the initial topology (pdb2gmx):
+
+   pdb2gmx -f *.pdb -p input.top
+
+2. Converting the initial topology (input.top) to the final one, including the special 1-4 
+   and 1-5 LJ exceptions:
+
+   CONVERT.py [-h] -c 1-X -i input.top -o output.top
+
+   optional arguments for the script:
+     -h, --help     show help message and exit
+     -c 1-X         Connectivity 1-2, 1-3, 1-4 or 1-6; any option will work for monomers
+     -i input.top   Input topology
+     -o output.top  Output topology
+
